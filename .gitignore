@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+._*
+
+# Comprimidos / respaldos
+*.zip
+
+# Dependencias y builds
+node_modules/
+dist/
+.vercel/
+
+# Editores
+.vscode/
+.idea/
+
+# Entorno
+.env
+.env.local
