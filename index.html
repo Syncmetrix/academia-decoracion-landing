@@ -8,6 +8,15 @@
 <meta name="description" content="Curso online de decoración de fiestas y eventos: 10 módulos, +70 clases y +6 horas de video. Aprende desde cero y cobra tu trabajo como profesional. Pago único de $27, garantía de 7 días.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- ===== VSL (VTurb / ConverteAI): optimización de carga ===== -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/5e71b797-336c-494e-9ed7-b66e22438bfe/players/6a89ce88c6291b3400b8e7a7/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/5e71b797-336c-494e-9ed7-b66e22438bfe/6a89ce7dcf1d8ee2436c1924/main.m3u8" as="fetch" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
 <script>/* Variante A/B sin FOUC: resuelta antes del primer paint */
 (function(){var v='A';try{v=(new URLSearchParams(location.search).get('v')||'A').toUpperCase()==='B'?'B':'A';}catch(e){}document.documentElement.dataset.variant=v;})();</script>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap">
@@ -51,7 +60,7 @@ CAPI: webhook de Hotmart → servidor; usar transaction_id como event_id para de
     <div>
       <p class="badge reveal">Curso online · Acceso inmediato · Garantía de 7 días</p>
       <h1>
-        Aprende <span class="h-script">decoración de fiestas y eventos</span> desde cero — y <span class="h1-extra">da el paso para </span><span class="h1-verbo">genera</span> ingresos extra desde casa.
+        Aprende <span class="h-script">decoración de fiestas y eventos</span> desde cero — y <span class="h1-extra">da el paso para </span>genera<span class="h1-r">r</span> ingresos extra desde casa.
       </h1>
       <p class="lead reveal" data-delay="120" style="margin-top:22px;max-width:52ch">Domina la técnica <strong>y aprende a presupuestar y cobrar tu trabajo como profesional</strong> — el paso a paso completo para empezar tu propio negocio de decoración, aunque partas de cero.</p>
       <p class="reveal" data-delay="240" style="margin:30px 0 0"><a class="btn btn--glow" data-checkout data-boton="hero" href="https://pay.hotmart.com/V106592052Q">Quiero empezar hoy — $27 →</a></p>
@@ -59,12 +68,13 @@ CAPI: webhook de Hotmart → servidor; usar transaction_id como event_id para de
       <p class="trust reveal" data-delay="360"><span>✓ Pago 100% seguro</span><span>✓ Acceso de por vida</span><span>✓ Garantía 7 días</span></p>
     </div>
     <div class="reveal" data-delay="180" style="position:relative">
-      <!-- VSL: pegar embed aquí (Vimeo/YouTube 16:9, reemplaza el contenido de .vsl) -->
+      <!-- VSL · VTurb SmartPlayer (el player trae su propia miniatura y botón de play) -->
       <div class="vsl" data-parallax="-0.25">
-        <img src="img/hero_mesa_montada_v2.webp" alt="Mesa de fiesta montada con arco de globos y torta, luz cálida" width="1600" height="900" fetchpriority="high">
-        <div class="vsl-overlay"><button class="vsl-play" aria-label="Reproducir video">▶</button></div>
-        <span class="vsl-tag">▶ 2 min</span>
+        <vturb-smartplayer id="vid-6a89ce88c6291b3400b8e7a7" style="display:block;margin:0 auto;width:100%">
+          <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:#000"></div>
+        </vturb-smartplayer>
       </div>
+      <script>(function(){var s=document.createElement('script');s.src='https://scripts.converteai.net/5e71b797-336c-494e-9ed7-b66e22438bfe/players/6a89ce88c6291b3400b8e7a7/v4/player.js';s.async=!0;document.head.appendChild(s);})();</script>
       <div class="hero-stat"><strong data-countup="3500">+3.500</strong><span>alumnas ya<br>empezaron</span></div>
     </div>
   </div>

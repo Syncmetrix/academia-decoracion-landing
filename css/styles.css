@@ -32,11 +32,9 @@ h2{font-weight:800;font-size:clamp(26px,4.2vw,44px);line-height:1.08}
 .lead{font-size:clamp(15px,1.8vw,18px);line-height:1.68;color:rgba(42,37,33,.8)}
 /* H1: móvil "genera ingresos" · ≥1024 "da el paso para generar ingresos".
    Un solo texto en el DOM (sin duplicar) para no romper SEO ni accesibilidad. */
-.h1-extra{display:none}
-.h1-verbo::after{content:""}
+.h1-extra,.h1-r{display:none}
 @media (min-width:1024px){
-  .h1-extra{display:inline}
-  .h1-verbo::after{content:"r"}
+  .h1-extra,.h1-r{display:inline}
 }
 
 /* Barra de progreso de scroll */
@@ -93,6 +91,9 @@ h2{font-weight:800;font-size:clamp(26px,4.2vw,44px);line-height:1.08}
 .vsl-play{width:clamp(64px,8vw,84px);height:clamp(64px,8vw,84px);border:none;border-radius:50%;background:var(--c-coral);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:clamp(24px,3vw,32px);animation:playPulse 2.4s ease-out infinite;transition:transform .2s}
 .vsl-play:hover{transform:scale(1.06)}
 .vsl-tag{position:absolute;top:12px;left:12px;background:rgba(226,78,92,.92);color:#fff;font-size:11px;font-weight:700;letter-spacing:.5px;padding:5px 12px;border-radius:999px}
+/* VSL · VTurb SmartPlayer dentro del marco .vsl */
+.vsl vturb-smartplayer{display:block;width:100%;height:100%}
+.vsl vturb-smartplayer>*{border-radius:inherit}
 .hero-stat{position:absolute;z-index:2;bottom:-14px;left:-2%;background:#fff;border-radius:14px;padding:11px 16px;box-shadow:0 20px 40px -18px rgba(166,42,60,.5);display:flex;align-items:center;gap:10px}
 .hero-stat strong{font-family:var(--font-display);font-weight:800;font-size:24px;color:var(--c-coral);line-height:1}
 .hero-stat span{font-size:11.5px;line-height:1.2;color:rgba(42,37,33,.7)}
