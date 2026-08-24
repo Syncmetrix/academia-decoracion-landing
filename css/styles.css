@@ -30,10 +30,14 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:-.5px;text-wrap:balance;
 h1{font-weight:800;font-size:clamp(31px,6.2vw,58px);line-height:1.05}
 h2{font-weight:800;font-size:clamp(26px,4.2vw,44px);line-height:1.08}
 .lead{font-size:clamp(15px,1.8vw,18px);line-height:1.68;color:rgba(42,37,33,.8)}
-/* H1 corto en móvil, largo en ≥1024 */
-.h1-long{display:none}
-.h1-short{display:inline}
-@media (min-width:1024px){.h1-long{display:inline}.h1-short{display:none}}
+/* H1: móvil "genera ingresos" · ≥1024 "da el paso para generar ingresos".
+   Un solo texto en el DOM (sin duplicar) para no romper SEO ni accesibilidad. */
+.h1-extra{display:none}
+.h1-verbo::after{content:""}
+@media (min-width:1024px){
+  .h1-extra{display:inline}
+  .h1-verbo::after{content:"r"}
+}
 
 /* Barra de progreso de scroll */
 #scroll-progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:90;background:linear-gradient(90deg,var(--c-mandarina),var(--c-coral));transform-origin:left}
