@@ -15,9 +15,9 @@
 <!-- ============ GTM — GTM-TQZQG9PZ ============ -->
 <script>window.dataLayer = window.dataLayer || [];</script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TQZQG9PZ');</script>
-<!-- Meta Pixel: disparar desde GTM (trigger: evento 'purchase' del dataLayer).
-     CAPI: la fuente de verdad del Purchase es el webhook de Hotmart → servidor,
-     con transaction_id como event_id para deduplicar con el pixel. -->
+<!-- Meta Pixel: NO disparar Purchase desde GTM en esta página.
+     Hotmart ya lo envía por pixel + API de Conversiones, deduplicados con su
+     propio event_id. El trigger `purchase` del dataLayer es SOLO para GA4. -->
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQZQG9PZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -123,11 +123,24 @@
 <script>
 /* ============================================================
    PURCHASE — se dispara al aterrizar desde el checkout Hotmart.
-   ⚠️ FUENTE DE VERDAD: el webhook de Hotmart → CAPI (server-side).
-   Este pixel del navegador es respaldo/dedupe, no el registro oficial.
+
+   ⚠️⚠️ EL PURCHASE DE META NO SE DISPARA AQUÍ. NO LO REPONGAS. ⚠️⚠️
+   Hotmart ya envía Purchase a Meta por sus DOS vías (pixel de
+   navegador + API de Conversiones con token), deduplicadas entre sí
+   con SU propio event_id. Si esta página disparara otro `fbq('track',
+   'Purchase')`, sería un TERCER evento con un event_id que no podemos
+   garantizar que coincida → ventas duplicadas, ROAS inflado y CPA
+   aparente a la mitad del real. Decisión tomada el 24/08/2026.
+
+   Lo que SÍ hacemos aquí:
+   - push de `purchase` al dataLayer → GTM dispara SOLO GA4
+     (GA4 no tiene integración nativa con Hotmart, así que sin esto
+     no habría conversión en Analytics).
+   - En GTM: NO crear etiqueta de Meta Pixel con el trigger `purchase`.
+
    Hotmart devuelve parámetros en la URL (transaction, off, sck, src…).
-   Valor y moneda CORRECTOS: 27 USD el core; si hubo order bumps,
-   el valor real lo reporta el webhook — no lo estimes aquí.
+   Valor: 27 USD el core; si hubo order bumps el total real lo reporta
+   el webhook de Hotmart — no lo estimes aquí.
    ============================================================ */
 (function () {
   function safeGet(store, k) { try { return window[store].getItem(k); } catch (e) { return null; } }
@@ -138,13 +151,13 @@
     data.ad_src = q.get('src') || safeGet('sessionStorage', 'ad_src') || 'directo';
     data.ad_sck = q.get('sck') || undefined;
   } catch (e) { /* datos mínimos: value + currency */ }
-  // El push al dataLayer se ejecuta SIEMPRE — GTM dispara Pixel/GA4 desde aquí
+  // El push al dataLayer se ejecuta SIEMPRE — GTM dispara GA4 desde aquí.
+  // NO se dispara Meta Pixel: el Purchase de Meta es de Hotmart (ver nota arriba).
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(Object.assign({ event: 'purchase' }, data));
+  window.dataLayer.push(Object.assign({ event: 'purchase', purchase_owner: 'hotmart_capi' }, data));
   try {
-    if (typeof fbq === 'function') fbq('track', 'Purchase', { value: data.value, currency: data.currency }, { eventID: data.transaction_id });
     if (typeof gtag === 'function') gtag('event', 'purchase', data);
-  } catch (e) { /* respaldo directo; GTM ya recibió el evento */ }
+  } catch (e) { /* respaldo directo de GA4; GTM ya recibió el evento */ }
 })();
 </script>
 </body>

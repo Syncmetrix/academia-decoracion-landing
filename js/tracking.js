@@ -105,7 +105,14 @@ window.AD_TRACKING = (function () {
         try {
           var payload = { variante: getVariant(), boton: boton, src: detectSrc(), sck: buildSck(boton) };
           window.dataLayer.push(Object.assign({ event: 'checkout_click', currency: 'USD', value: 27 }, payload));
-          if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', payload);
+          /* ⚠️ NO usar InitiateCheckout aquí. Hotmart ya lo dispara al cargar su
+             checkout, y son momentos distintos del embudo: aquí es "hizo clic en
+             el CTA", allá es "llegó al checkout". Con el mismo nombre, Meta los
+             suma y el costo por pago iniciado aparece a la mitad del real.
+             AddToCart deja el embudo limpio: ViewContent → AddToCart (clic en CTA,
+             nuestro) → InitiateCheckout (checkout cargado, Hotmart) → Purchase
+             (Hotmart, pixel + CAPI deduplicados). Decisión del 24/08/2026. */
+          if (typeof fbq === 'function') fbq('track', 'AddToCart', Object.assign({ value: 27, currency: 'USD' }, payload));
           if (typeof gtag === 'function') gtag('event', 'begin_checkout', { currency: 'USD', value: 27, ad_meta: payload });
         } catch (e) { /* el click sigue navegando al href */ }
       });
