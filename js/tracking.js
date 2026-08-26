@@ -119,9 +119,34 @@ window.AD_TRACKING = (function () {
     });
   }
 
+  /* ---- ViewContent: señal de lectura real, no de rebote ----
+     Se dispara UNA vez cuando la sección de oferta entra en pantalla.
+     Distingue a quien leyó la propuesta de quien rebotó en el hero, y da
+     un público de remarketing tibio muy por encima de "visitó la landing".
+     Ojo: Hotmart también manda ViewContent, pero desde SU página de producto
+     del marketplace — página que no está en este embudo, así que no chocan. */
+  function initViewContent() {
+    var el = document.getElementById('oferta');
+    if (!el || !('IntersectionObserver' in window)) return;
+    var yaDisparado = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || yaDisparado) return;
+        yaDisparado = true;
+        io.disconnect();
+        try {
+          var payload = { variante: getVariant(), src: detectSrc(), seccion: 'oferta' };
+          window.dataLayer.push(Object.assign({ event: 'view_offer', currency: 'USD', value: 27 }, payload));
+          if (typeof fbq === 'function') fbq('track', 'ViewContent', Object.assign({ value: 27, currency: 'USD' }, payload));
+        } catch (e) { /* nunca romper la página por tracking */ }
+      });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  }
+
   try {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-    else init();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); initViewContent(); });
+    else { init(); initViewContent(); }
   } catch (e) { /* fallback: hrefs del HTML */ }
 
   return { detectSrc: detectSrc, getVariant: getVariant, enrich: enrich, clean: clean, safeGet: safeGet, safeSet: safeSet };
