@@ -112,9 +112,10 @@
         if (!e.isIntersecting) return;
         io2.unobserve(e.target);
         var el = e.target, end = parseInt(el.dataset.countup, 10), t0 = performance.now();
+        var final = el.textContent; // termina en el texto del HTML (toLocaleString('es') no agrupa 4 cifras: «1000»)
         (function frame(t) {
           var p = Math.min(1, (t - t0) / 1400);
-          el.textContent = '+' + Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString('es');
+          el.textContent = p < 1 ? '+' + Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString('es') : final;
           if (p < 1) requestAnimationFrame(frame);
         })(t0);
       });
