@@ -44,12 +44,12 @@
 <!-- ============ GTM — GTM-TQZQG9PZ ============ -->
 <script>window.dataLayer = window.dataLayer || [];</script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TQZQG9PZ');</script>
-<!-- ============ META PIXEL — disparar desde GTM (slots listos) ============
-En GTM: etiqueta "Custom HTML" con el pixel base fbq('init','PIXEL_ID') + PageView
-en All Pages. InitiateCheckout: trigger sobre evento dataLayer 'checkout_click'.
-Purchase: trigger sobre 'purchase' (en gracias.html) — valor/moneda ya van en el push.
-CAPI: webhook de Hotmart → servidor; usar transaction_id como event_id para dedupe.
-====================================================== -->
+<!-- ============ EVENTOS — quién manda cada uno (decisión 24-ago-2026) ============
+GTM: etiqueta Custom HTML con el píxel base 1360065582424784 + PageView en All Pages.
+js/tracking.js llama fbq directo: ViewContent (sección #oferta) y AddToCart (clic en CTA).
+InitiateCheckout y Purchase de Meta los manda HOTMART (píxel + CAPI): NO crearlos en GTM.
+dataLayer para GA4: page_view · view_offer · checkout_click · vsl_50 · purchase (gracias.html).
+================================================================================ -->
 </head>
 <body>
 <!-- GTM noscript -->

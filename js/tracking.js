@@ -72,6 +72,12 @@ window.AD_TRACKING = (function () {
     var u = new URL(baseHref, location.href);
     u.searchParams.set('src', detectSrc());
     u.searchParams.set('sck', buildSck(boton));
+    // Las variantes usan checkouts distintos: A sin order bumps, B con ellos
+    // (checkoutMode=10). Si B cayera en el checkout base no vería los bumps que
+    // la landing le anuncia; si A cayera en el 10, vería extras pagos que no
+    // le anunciamos.
+    if (getVariant() === 'B') u.searchParams.set('checkoutMode', '10');
+    else u.searchParams.delete('checkoutMode');
     return u.toString();
   }
 
@@ -144,9 +150,35 @@ window.AD_TRACKING = (function () {
     io.observe(el);
   }
 
+  /* ---- vsl_50: la mitad del VSL vista (solo GA4, por dataLayer) ----
+     El reproductor de vTurb no expone la duración, así que va fija aquí.
+     ⚠️ Si se cambia el VSL en vTurb, actualizar VSL_SEGUNDOS.
+     A Meta no se le manda nada: vTurb ya envía View0%…View95% al píxel
+     1360065582424784 por su integración propia. */
+  var VSL_SEGUNDOS = 237; // VSL v6 (el v5 dura casi lo mismo)
+  function initVsl() {
+    var intentos = 0, enviado = false;
+    (function esperar() {
+      var sp = window.smartplayer;
+      if (!sp || !sp.instances || !sp.instances.length) {
+        if (++intentos < 60) setTimeout(esperar, 500); // el player carga async: 30 s máx
+        return;
+      }
+      sp.instances.forEach(function (p) {
+        try {
+          p.on('timeupdate', function (seg) {
+            if (enviado || seg < VSL_SEGUNDOS / 2) return;
+            enviado = true;
+            window.dataLayer.push({ event: 'vsl_50', variante: getVariant(), src: detectSrc(), vsl_segundos: VSL_SEGUNDOS });
+          });
+        } catch (e) { /* nunca romper la página por tracking */ }
+      });
+    })();
+  }
+
   try {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); initViewContent(); });
-    else { init(); initViewContent(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); initViewContent(); initVsl(); });
+    else { init(); initViewContent(); initVsl(); }
   } catch (e) { /* fallback: hrefs del HTML */ }
 
   return { detectSrc: detectSrc, getVariant: getVariant, enrich: enrich, clean: clean, safeGet: safeGet, safeSet: safeSet };

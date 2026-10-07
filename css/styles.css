@@ -175,9 +175,10 @@ html[data-variant="B"] .bumps{display:block}
 .bump{display:flex;justify-content:space-between;gap:10px;background:var(--c-crema-2);border:1px solid rgba(225,139,42,.25);border-radius:10px;padding:10px 14px;font-size:13.5px;margin-top:8px}
 .bump b{color:var(--c-coral)}
 
-/* BONOS (solo variante A) */
+/* BONOS — visibles en A y en B. A y B entregan el mismo curso y los mismos 11 bonos:
+   el test es de mecánica de venta de los extras pagos (order bumps en el checkout B
+   vs. upsell en la página de gracias A), no de producto. */
 .bonos{background:linear-gradient(135deg,var(--c-mandarina) 0%,var(--c-coral) 100%);color:#fff;overflow:hidden}
-html[data-variant="B"] #bonos{display:none}
 .bonos-grid{display:grid;gap:14px;grid-template-columns:1fr}
 @media (min-width:480px){.bonos-grid{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1024px){.bonos-grid{grid-template-columns:repeat(3,1fr)}}
