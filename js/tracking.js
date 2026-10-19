@@ -155,7 +155,15 @@ window.AD_TRACKING = (function () {
      ⚠️ Si se cambia el VSL en vTurb, actualizar VSL_SEGUNDOS.
      A Meta no se le manda nada: vTurb ya envía View0%…View95% al píxel
      1360065582424784 por su integración propia. */
-  var VSL_SEGUNDOS = 237; // VSL v6 (el v5 dura casi lo mismo)
+  var VSL_SEGUNDOS = 237; // VSL del 19-oct (player 6ad61a61…): 237,0 s MEDIDOS sumando los
+                          // #EXTINF de su main.m3u8 (60 segmentos). No estimado.
+                          // Antes aquí también decía 237, pero el VSL que estaba embebido
+                          // (6a89ce7d…) duraba 125,3 s: el umbral caía en el 94,6% del video,
+                          // así que `vsl_50` casi nunca se disparaba y cuando lo hacía ya era
+                          // el final. Con este VSL el valor por fin coincide.
+                          // Cómo se vuelve a medir, sin estimar: abrir
+                          // https://cdn.converteai.net/<cuenta>/<id-media>/main.m3u8 y sumar
+                          // los #EXTINF (desde la consola de la propia landing: el CDN permite CORS).
   function initVsl() {
     var intentos = 0, enviado = false;
     (function esperar() {
