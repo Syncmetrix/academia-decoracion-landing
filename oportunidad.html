@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Una cosa más antes de entrar — Academia de Decoración</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- ============ GTM — GTM-TQZQG9PZ ============ -->
+<script>window.dataLayer = window.dataLayer || [];</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TQZQG9PZ');</script>
+<!-- ⚠️ ESTA PÁGINA NO ES LA CONFIRMACIÓN. La confirmación es /gracias.
+     Aquí NO va Purchase, ni de Meta ni de GA4:
+     · El Purchase de Meta es de Hotmart (pixel + CAPI, deduplicados con su event_id).
+     · El Purchase de GA4 se dispara en /gracias y solo ahí.
+     Lo único que sale de aquí son dos eventos propios de embudo, solo para GA4:
+     `upsell_view` y `upsell_decision`. En GTM: no asociarlos a ninguna etiqueta de Meta. -->
+
+<style>
+  /* ---- Pasos del embudo: quita la ansiedad de "¿se procesó mi pago?" ---- */
+  .ups-steps{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+  .ups-step{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:rgba(42,37,33,.55)}
+  .ups-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:rgba(225,139,42,.18);color:var(--c-vino);flex:none}
+  .ups-step.done .ups-dot{background:var(--c-mandarina);color:#fff}
+  .ups-step.now{color:var(--c-carbon)}
+  .ups-step.now .ups-dot{background:var(--c-coral);color:#fff;box-shadow:0 0 0 4px rgba(226,78,92,.18)}
+  .ups-sep{width:18px;height:2px;background:rgba(225,139,42,.28);border-radius:99px}
+  @media (max-width:520px){.ups-sep{width:10px}.ups-step span.t{display:none}}
+
+  /* ---- Tarjeta de oferta ---- */
+  .ups-card{position:relative;max-width:820px;margin-inline:auto;background:#fff;border-radius:26px;padding:clamp(26px,4vw,44px);box-shadow:0 44px 90px -44px rgba(166,42,60,.7);border:1px solid rgba(238,184,76,.45)}
+  .ups-ribbon{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--c-mandarina),var(--c-coral));color:#fff;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:9px 22px;border-radius:999px;white-space:nowrap;box-shadow:0 12px 24px -10px rgba(166,42,60,.6)}
+  .ups-list{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:13px}
+  @media (min-width:700px){.ups-list{grid-template-columns:1fr 1fr;gap:13px 26px}}
+  .ups-list li{display:flex;gap:11px;align-items:flex-start;font-size:15px;line-height:1.45}
+  .ups-list li::before{content:"✓";flex:none;width:23px;height:23px;border-radius:50%;background:rgba(225,139,42,.16);color:var(--c-mandarina);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;margin-top:1px}
+  .ups-actions{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .ups-actions .btn{width:100%;max-width:460px;text-align:center}
+  .ups-no{background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:13.5px;color:rgba(42,37,33,.55);text-decoration:underline;text-underline-offset:3px;padding:6px 10px}
+  .ups-no:hover{color:var(--c-vino)}
+  .ups-note{font-size:12.5px;color:rgba(42,37,33,.55);text-align:center;max-width:46ch;margin:0 auto}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQZQG9PZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<section class="section" style="background:radial-gradient(115% 90% at 88% -6%,rgba(238,184,76,.5),rgba(238,184,76,0) 52%),linear-gradient(135deg,#FDF6EA 0%,#FBEAD2 60%,#F7DCC0 100%);padding-top:clamp(40px,6vw,64px);padding-bottom:clamp(44px,6vw,72px)">
+  <div class="container">
+
+    <div class="ups-steps">
+      <div class="ups-step done"><span class="ups-dot" aria-hidden="true">✓</span><span class="t">Pago confirmado</span></div>
+      <i class="ups-sep" aria-hidden="true"></i>
+      <div class="ups-step now"><span class="ups-dot" aria-hidden="true">2</span><span class="t">Una oferta para ti</span></div>
+      <i class="ups-sep" aria-hidden="true"></i>
+      <div class="ups-step"><span class="ups-dot" aria-hidden="true">3</span><span class="t">Tus accesos</span></div>
+    </div>
+
+    <div style="text-align:center;max-width:760px;margin-inline:auto">
+      <p class="kicker">Tu compra está confirmada · no cierres esta página</p>
+      <h1 style="font-size:clamp(28px,5vw,50px)">Antes de entrar, <span class="h-script">una sola cosa.</span></h1>
+      <p class="lead" style="margin-top:16px">Tu curso ya es tuyo y los accesos van en camino a tu correo. Esto que sigue aparece <strong>una sola vez</strong>, y es la única vez que lo vas a ver a este precio.</p>
+    </div>
+
+    <div class="ups-card" style="margin-top:clamp(34px,5vw,52px)">
+      <span class="ups-ribbon">Solo en esta página</span>
+
+      <p class="kicker" style="text-align:center;margin-top:10px">Curso complementario</p>
+      <h2 style="text-align:center;font-size:clamp(25px,3.8vw,38px)">Decoración con <span class="h-script">Globos</span></h2>
+      <p class="lead" style="text-align:center;margin:14px auto 0;max-width:56ch;font-size:15.5px">El globo es lo primero que te van a pedir y lo que más rápido se cobra. Aquí está la técnica completa: armar, medir, pegar y <strong>dejarlo montado en la pared sin que se caiga</strong>.</p>
+
+      <ul class="ups-list">
+        <li>La cuadrupleta: el racimo con el que se construye cualquier guirnalda</li>
+        <li>Nudo, dupla y unión — la base que te ahorra horas de trabajo</li>
+        <li>Guirnaldas orgánicas combinando tamaños y colores</li>
+        <li>Columnas de globos que quedan rectas y aguantan</li>
+        <li>Globos metalizados: inflar por la válvula, sellar y que no se desinflen</li>
+        <li>La plantilla medidora: el truco para que todos queden parejos</li>
+        <li>Puntos de pegamento y acabados que se ven profesionales</li>
+        <li>Montaje en pared sin dañar la pared de tu clienta</li>
+        <li>Bases y estructuras económicas, con lo que ya tienes en casa</li>
+        <li>Flores de globo largo para rematar el montaje</li>
+      </ul>
+
+      <div class="price">
+        <!-- ⚠️ PRECIO SIN VERIFICAR EN DÓLARES. El 19-oct-2026 el checkout
+             E106592132W mostró S/ 92,00 porque Hotmart geolocalizó Perú.
+             La cifra US$27 viene del vault (acuerdo del 1-sep), no de haberla
+             visto en pantalla. Confirmar qué ve un comprador de EE.UU. y de
+             México —los dos mercados con ventas— antes de publicar. -->
+        <strong>$27</strong><span>pago único</span>
+      </div>
+      <p class="ups-note">Se suma a lo que ya compraste. Acceso de por vida, igual que el curso.</p>
+
+      <div class="ups-actions">
+        <a class="btn btn--glow" id="ups-si"
+           href="https://pay.hotmart.com/E106592132W"
+           rel="noopener">Sí, quiero agregarlo a mi compra →</a>
+        <button type="button" class="ups-no" id="ups-no">No, gracias. Llévame a mis accesos.</button>
+      </div>
+    </div>
+
+    <div style="max-width:820px;margin:clamp(26px,4vw,38px) auto 0;display:grid;gap:16px">
+      <div class="fit fit--yes" style="padding:22px 26px">
+        <div class="fit-head" style="font-size:18px;margin-bottom:10px"><span class="fit-ico" style="background:var(--c-mandarina)">🛡️</span>La misma garantía</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(42,37,33,.75)">Si en 7 días sientes que no era para ti, te devolvemos este pago. Tu curso principal no se toca.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <a class="logo" href="/" aria-label="Academia de Decoración">
+      <span class="logo-iso" aria-hidden="true">Ad</span>
+      <span class="logo-txt"><small style="color:var(--c-dorado)">Academia de</small><strong style="color:var(--c-crema)">Decoración</strong></span>
+    </a>
+    <small>© Academia de Decoración. Todos los derechos reservados.</small>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   /oportunidad — página intermedia entre el checkout y /gracias.
+
+   ⚠️ NO DISPARAR Purchase AQUÍ, NI DE META NI DE GA4.
+   Esta página no es la confirmación. El Purchase de Meta lo manda
+   Hotmart (pixel + CAPI, deduplicados con SU event_id) y el de GA4
+   se dispara en /gracias. Un Purchase aquí duplicaría la venta y
+   dejaría el ROAS inflado y el CPA a la mitad del real. Misma
+   decisión del 24/08/2026 que rige en /gracias y en tracking.js.
+
+   Lo que sí hace este script:
+   1. Arrastra src/sck/transaction de la URL al checkout del upsell,
+      para poder atribuir qué anuncio trae los upsells. Reusa la
+      convención de tracking.js, pero NO lo carga: ese módulo
+      enriquece [data-checkout] y dispara un AddToCart de US$27 del
+      curso principal, que aquí sería un evento falso.
+   2. Manda dos eventos propios al dataLayer, solo para GA4:
+      `upsell_view` y `upsell_decision` (accepted | declined).
+   ============================================================ */
+(function () {
+  'use strict';
+  // "No, gracias" → confirmación. Sin .html porque vercel.json tiene
+  // cleanUrls:true; apuntar a gracias.html provocaría un 308 innecesario.
+  var DESTINO_NO = '/gracias';
+  var q;
+  try { q = new URLSearchParams(location.search); } catch (e) { q = null; }
+
+  function param(k) { try { return q && q.get(k); } catch (e) { return null; } }
+
+  function push(ev, extra) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({
+        event: ev,
+        upsell_producto: 'decoracion-con-globos',
+        ad_src: param('src') || 'directo',
+        ad_sck: param('sck') || undefined,
+        transaction_id: param('transaction') || param('transaction_id') || undefined
+      }, extra || {}));
+    } catch (e) { /* nunca romper la página por tracking */ }
+  }
+
+  /* 1. Arrastrar la atribución al checkout del upsell */
+  var si = document.getElementById('ups-si');
+  try {
+    var u = new URL(si.getAttribute('href'), location.href);
+    if (param('src')) u.searchParams.set('src', param('src'));
+    // sck del upsell: se marca como tal para distinguirlo de la venta principal
+    u.searchParams.set('sck', ['upsell', 'globos', (param('sck') || 'na')].join('_').slice(0, 60));
+    si.href = u.toString();
+    si.rel = 'noopener';
+  } catch (e) { /* el href del HTML queda como respaldo */ }
+
+  /* 2. Eventos de embudo */
+  push('upsell_view');
+
+  si.addEventListener('click', function () { push('upsell_decision', { upsell_decision: 'accepted' }); });
+
+  document.getElementById('ups-no').addEventListener('click', function () {
+    push('upsell_decision', { upsell_decision: 'declined' });
+    // Conserva los parámetros de la URL para que /gracias siga viendo
+    // transaction, src y sck y pueda atribuir el Purchase de GA4.
+    location.href = DESTINO_NO + (location.search || '');
+  });
+})();
+</script>
+</body>
+</html>
